@@ -1,0 +1,35 @@
+.App h1 {
+    margin: 0;
+    margin-left: 40px;
+}
+.App .first-line {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 10px;
+    align-items: center;
+    height: 2em;
+}
+.App .first-line button {
+    margin-right: 40px;
+    padding: 0 20px;
+    height: 2em;
+    line-height: 2em;
+    text-align: center;
+    background-color: red;
+    color: white;
+    border: none;
+}
+.App .all-student ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: space-between;
+}
+.App .all-student ul li {
+    height: 1.5em;
+    line-height: 1.5em;
+    padding: 10px;
+    margin: 10px;
+    background-color: #eeeeee;
+}

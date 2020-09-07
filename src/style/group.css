@@ -1,0 +1,28 @@
+ul{
+    list-style: none;
+}
+.Group {
+    border: 1px solid #929aab;
+    margin: 40px;
+}
+.Group > h2 {
+    margin: 0;
+    background-color: #929aab;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    height: 2em;
+    line-height: 2em;
+    border-bottom: 1px solid #929aab;
+}
+.Group .team-content ul{
+    display: flex;
+    justify-content: space-between;
+}
+.Group .team-content ul li {
+    height: 1.5em;
+    line-height: 1.5em;
+    padding: 10px;
+    margin: 10px;
+    background-color: #eeeeee;
+}
