@@ -2,10 +2,20 @@ import React, { Component } from 'react';
 import '../style/group.css';
 
 class Group extends Component {
+    state = {
+        groupName : this.props.num,
+      };
+    
+    inputGroupName = (event) => {
+        this.setState({
+            groupName:event.target.value,
+        });
+    };
+      
     render() {
       return (
         <div className="Group">
-          <h2>Team {this.props.num}</h2>
+            <input type="text" value={this.state.groupName} onChange={this.inputGroupName}/>
           <div className="team-content">
               <ul>
                   <li>1.liaojunbin</li>

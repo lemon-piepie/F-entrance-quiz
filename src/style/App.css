@@ -1,17 +1,21 @@
+.App {
+    width: 1500px;
+    margin: 0 auto;
+}
 .App h1 {
     margin: 0;
-    margin-left: 40px;
+    margin-left: 50px;
 }
 .App .first-line {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
-    padding: 10px;
+    padding: 10px 10px 20px 0;
     align-items: center;
     height: 2em;
 }
 .App .first-line button {
-    margin-right: 40px;
+    margin-right: 60px;
     padding: 0 20px;
     height: 2em;
     line-height: 2em;
@@ -20,6 +24,15 @@
     color: white;
     border: none;
 }
+.groupListHide {
+    display: none;
+}
+.groupListShow {
+    display: block;
+}
+.studentList h1 {
+    margin-left: 10px;
+}
 .App .all-student ul{
     display: flex;
     flex-wrap: wrap;
@@ -27,8 +40,18 @@
     align-content: space-between;
 }
 .App .all-student ul li {
+    width: 135px;
     height: 1.5em;
     line-height: 1.5em;
+    padding: 10px;
+    margin: 10px;
+    background-color: #eeeeee;
+}
+.App .all-student input[type="text"] {
+    height: 1.5em;
+    line-height: 1.5em;
+    width: 90px;
+    border: none;
     padding: 10px;
     margin: 10px;
     background-color: #eeeeee;

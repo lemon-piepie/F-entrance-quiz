@@ -4,6 +4,15 @@ import '../style/App.css';
 import Group from '../Components/Group';
 
 class App extends Component {
+  state = {
+    showGroup:false,
+  }
+
+  showGroupList = () => {
+    this.setState({
+      showGroup:true,
+    })
+  }
   
   render() {
     return (
@@ -11,14 +20,16 @@ class App extends Component {
         <section>
           <div className="first-line">
             <h1>分组列表</h1>
-            <button>分组学员</button>
+            <button onClick={this.showGroupList}>分组学员</button>
           </div>
-          <Group num="1"/>
-          <Group num="2"/>
-          <Group num="3"/>
-          <Group num="4"/>
-          <Group num="5"/>
-          <Group num="6"/>
+          <div className={this.state.showGroup?'groupListShow':'groupListHide'}>
+            <Group num="Team 1"/>
+            <Group num="Team 2"/>
+            <Group num="Team 3"/>
+            <Group num="Team 4"/>
+            <Group num="Team 5"/>
+            <Group num="Team 6"/>
+          </div>          
         </section>
         <section>
           <h1>学员列表</h1>
@@ -54,6 +65,7 @@ class App extends Component {
                 <li>4.wangjianglin</li>
                 <li>5.wangdengyu</li>
                 <li>6.chensicong</li>
+                <input type="text" placeholder="+添加学员" />
               </ul>
           </div>
         </section>
