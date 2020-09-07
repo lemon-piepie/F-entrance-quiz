@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import '../style/group.css';
 
 class Group extends Component {
-    state = {
+  constructor(props){
+    super(props);
+    this.state = {
         groupName : this.props.num,
-      };
+      }
+  }
+    
     
     inputGroupName = (event) => {
         this.setState({
