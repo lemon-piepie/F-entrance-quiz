@@ -8,50 +8,57 @@ class App extends Component {
     super(props);
     this.state = {
       showGroup:false,
-      students:[
+      students:[],
+      studentsRandom:[],
+      groupOne:[
         {id:1,name:"廖浚斌"},
         {id:2,name:"沈乐棋"},
         {id:3,name:"徐慧慧"},
+        {id:4,name:"陈思聪"},
         {id:5,name:"王江林"},
         {id:6,name:"王登宇"},
-        {id:7,name:"杨思雨"},
+        {id:7,name:"杨思雨"}
+      ],
+      groupTwo:[
         {id:8,name:"江雨舟"},
         {id:9,name:"廖燊"},
         {id:10,name:"胡晓"},
         {id:11,name:"但杰"},
         {id:12,name:"盖迈达"},
-        {id:13,name:"肖美琦"},
+        {id:13,name:"肖美琦"}
+      ],
+      groupThree:[
         {id:14,name:"黄云洁"},
         {id:15,name:"齐瑾浩"},
         {id:16,name:"刘亮亮"},
         {id:17,name:"肖逸凡"},
         {id:18,name:"王作文"},
-        {id:19,name:"郭瑞凌"},
+        {id:19,name:"郭瑞凌"}
+      ],
+      groupFour:[ 
         {id:20,name:"李明豪"},
         {id:21,name:"党泽"},
         {id:22,name:"肖伊佐"},
         {id:23,name:"贠晨曦"},
         {id:24,name:"李康宁"},
-        {id:25,name:"童世祁"},
+        {id:25,name:"童世祁"}
+      ],
+      groupFive:[
         {id:26,name:"马庆"},
         {id:27,name:"商婕"},
         {id:28,name:"余榕"},
         {id:29,name:"谌哲"},
         {id:30,name:"董翔锐"},
-        {id:31,name:"陈泰宇"},
+        {id:31,name:"陈泰宇"}
+      ],
+      groupSix:[
         {id:32,name:"赵允齐"},
         {id:33,name:"张柯"},
         {id:34,name:"廖文强"},
         {id:35,name:"刘轲"},
         {id:36,name:"岳港"},
-        {id:37,name:"凌凤仪"}               
+        {id:37,name:"凌凤仪"}
       ],
-      groupOne:[],
-      groupTwo:[],
-      groupThree:[],
-      groupFour:[],
-      groupFive:[],
-      groupSix:[],
     }
   }
   
@@ -59,9 +66,9 @@ class App extends Component {
     const url = 'http://localhost:8080/student';
     this.fetchStudents(url)
       .then((result) => {
-        console.log(result);
         this.setState({
           students: JSON.parse(result),
+          studentsRandom:JSON.parse(result),
         });
       })
       .catch((error) => console.error(error));
@@ -87,6 +94,9 @@ class App extends Component {
   showGroupList = () => {
     this.setState({
       showGroup:true,
+      studentsRandom: this.state.studentsRandom.sort(() => {
+        return Math.round(Math.random()) - 0.5;
+      }),
     })
     this.divideGroup();
   }
@@ -95,20 +105,32 @@ class App extends Component {
     const studentNumber = this.state.students.length;
     const each = studentNumber/6;
     const more = studentNumber%6;
-    const memberEach = [each,each,each,each,each,each];
-    for(let i = 0; i <= more ; i++){
+    const memberEach = [each,each,each,each,each,each];   
+    for(let i = 0; i < more ; i++){
       memberEach[i] = each+1;
     }
-    for(let j=0; j<studentNumber; j++){
-      const randomId = Math.floor(Math.random()*(studentNumber)+1);
-      const usedId = [];
-      
-      if(!usedId.find(randomId)){
-        usedId.push(randomId);
-      }
-    }
 
-    console.log(randomId);
+    const firstGroup = memberEach[0];
+    const secondGroup = memberEach[1];
+    const thirdGroup = memberEach[2];
+    const fourGroup = memberEach[3];
+    const fiveGroup = memberEach[4];
+    const sixGroup = memberEach[5];
+    const group1 = this.state.studentsRandom.slice(0,firstGroup);
+    const group2 = this.state.studentsRandom.slice(firstGroup,firstGroup+secondGroup);
+    const group3 = this.state.studentsRandom.slice(firstGroup+secondGroup,firstGroup+secondGroup+thirdGroup);
+    const group4 = this.state.studentsRandom.slice(firstGroup+secondGroup+thirdGroup,firstGroup+secondGroup+thirdGroup+fourGroup);
+    const group5 = this.state.studentsRandom.slice(firstGroup+secondGroup+thirdGroup+fourGroup,firstGroup+secondGroup+thirdGroup+fourGroup+fiveGroup);
+    const group6 = this.state.studentsRandom.slice(firstGroup+secondGroup+thirdGroup+fourGroup+fiveGroup,firstGroup+secondGroup+thirdGroup+fourGroup+fiveGroup+sixGroup);
+
+    this.setState({
+      groupOne:group1,
+      groupTwo:group2,
+      groupThree:group3,
+      groupFour:group4,
+      groupFive:group5,
+      groupSix:group6,
+    });
   }
   
   render() {

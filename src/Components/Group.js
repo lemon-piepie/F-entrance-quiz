@@ -2,13 +2,6 @@ import React, { Component } from 'react';
 import '../style/group.css';
 
 class Group extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-        groupName : this.props.num,
-      }
-  }
-    
     
     inputGroupName = (event) => {
         this.setState({
@@ -19,15 +12,12 @@ class Group extends Component {
     render() {
       return (
         <div className="Group">
-            <input type="text" value={this.state.groupName} onChange={this.inputGroupName}/>
+            <input type="text" value={this.props.num} onChange={this.inputGroupName}/>
           <div className="team-content">
               <ul>
-                  <li>1.liaojunbin</li>
-                  <li>2.shenleqi</li>
-                  <li>3.xuhuihui</li>
-                  <li>4.wangjianglin</li>
-                  <li>5.wangdengyu</li>
-                  <li>6.chensicong</li>
+                {this.props.groupMember.map((student) => (
+                  <li>{student.id}. {student.name}</li>
+                ))}
               </ul>
           </div>
         </div>
